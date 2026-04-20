@@ -68,7 +68,7 @@ const start = async () => {
       console.log(`📋 API docs: http://localhost:${PORT}/api/health\n`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error.message);
+    console.error('❌ Failed to start server:', error);
     process.exit(1);
   }
 };
