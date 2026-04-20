@@ -14,18 +14,6 @@ const pool = mysql.createPool({
 });
 
 const initDatabase = async () => {
-  const conn = await mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-  });
-
-  // Create DB if not exists
-  await conn.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME || 'notes_app'}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`);
-  await conn.end();
-
-  // Create tables
   await pool.query(`
     CREATE TABLE IF NOT EXISTS users (
       id VARCHAR(36) PRIMARY KEY,
