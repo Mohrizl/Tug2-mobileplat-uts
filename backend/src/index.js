@@ -39,6 +39,18 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Your Notes API is running 🚀',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      notes: '/api/notes'
+    }
+  });
+});
+
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/notes', require('./routes/notesRoutes'));
